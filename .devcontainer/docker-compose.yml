@@ -1,0 +1,21 @@
+version: '3'
+services:
+  devcontainer:
+    build:
+      context: ..
+      dockerfile: .devcontainer/Dockerfile
+      args:
+        USER_UID: "${USER_UID}"
+        USERNAME: "${USERNAME}"
+    volumes:
+      - ..:/workspace:cached
+      - devcontainer-vscode-server:/home/${USERNAME}/.vscode-server/extensions
+      - devcontainer-vscode-server-insiders:/home/${USERNAME}/.vscode-server-insiders/extensions
+      - devcontainer-bash-history:/commandhistory
+    command: /bin/sh -c "while sleep 1000; do :; done"
+    user: "${USER_UID}"
+    env_file: .env
+volumes:
+  devcontainer-vscode-server:
+  devcontainer-vscode-server-insiders:
+  devcontainer-bash-history:
