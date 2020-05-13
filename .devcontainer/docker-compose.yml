@@ -14,7 +14,6 @@ services:
       - devcontainer-bash-history:/commandhistory
     command: /bin/sh -c "while sleep 1000; do :; done"
     user: "${USER_UID}"
-    env_file: .env
 volumes:
   devcontainer-vscode-server:
   devcontainer-vscode-server-insiders:
